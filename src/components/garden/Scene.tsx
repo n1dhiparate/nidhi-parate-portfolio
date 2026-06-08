@@ -14,34 +14,65 @@ export function Scene() {
   const hillShift = useTransform(scrollYProgress, [0, 1], [0, -40]);
 
   // 24 flowers placed across the hills, each blooming in its own scroll window
-  const flowers = [
-    { x: 5, baseY: 60, size: 90, hue: 350, start: 0.05, end: 0.25, variant: "daisy" as const },
-    { x: 14, baseY: 40, size: 110, hue: 20, start: 0.08, end: 0.3, variant: "tulip" as const },
-    { x: 22, baseY: 70, size: 80, hue: 320, start: 0.12, end: 0.32, variant: "bell" as const },
-    { x: 30, baseY: 50, size: 100, hue: 280, start: 0.15, end: 0.38, variant: "daisy" as const },
-    { x: 38, baseY: 80, size: 95, hue: 60, start: 0.18, end: 0.4, variant: "tulip" as const },
-    { x: 46, baseY: 45, size: 120, hue: 340, start: 0.2, end: 0.45, variant: "daisy" as const },
-    { x: 54, baseY: 65, size: 85, hue: 200, start: 0.22, end: 0.45, variant: "bell" as const },
-    { x: 62, baseY: 55, size: 110, hue: 10, start: 0.25, end: 0.5, variant: "tulip" as const },
-    { x: 70, baseY: 75, size: 95, hue: 300, start: 0.28, end: 0.52, variant: "daisy" as const },
-    { x: 78, baseY: 50, size: 100, hue: 50, start: 0.3, end: 0.55, variant: "tulip" as const },
-    { x: 86, baseY: 65, size: 90, hue: 330, start: 0.32, end: 0.58, variant: "bell" as const },
-    { x: 94, baseY: 45, size: 105, hue: 270, start: 0.35, end: 0.6, variant: "daisy" as const },
-    // Second wave - mid/late bloom
-    { x: 10, baseY: 110, size: 70, hue: 340, start: 0.4, end: 0.65, variant: "bell" as const },
-    { x: 26, baseY: 130, size: 75, hue: 30, start: 0.45, end: 0.7, variant: "daisy" as const },
-    { x: 42, baseY: 115, size: 80, hue: 310, start: 0.5, end: 0.72, variant: "tulip" as const },
-    { x: 58, baseY: 135, size: 70, hue: 70, start: 0.52, end: 0.75, variant: "daisy" as const },
-    { x: 74, baseY: 120, size: 78, hue: 350, start: 0.55, end: 0.78, variant: "bell" as const },
-    { x: 90, baseY: 140, size: 72, hue: 20, start: 0.58, end: 0.8, variant: "tulip" as const },
-    // Final foreground burst
-    { x: 18, baseY: 20, size: 130, hue: 340, start: 0.7, end: 0.9, variant: "daisy" as const },
-    { x: 50, baseY: 15, size: 150, hue: 20, start: 0.75, end: 0.95, variant: "tulip" as const },
-    { x: 82, baseY: 25, size: 135, hue: 300, start: 0.78, end: 0.98, variant: "daisy" as const },
-    { x: 35, baseY: 30, size: 110, hue: 60, start: 0.8, end: 1, variant: "bell" as const },
-    { x: 66, baseY: 35, size: 115, hue: 200, start: 0.82, end: 1, variant: "tulip" as const },
-    { x: 5, baseY: 10, size: 90, hue: 350, start: 0.85, end: 1, variant: "daisy" as const },
+  // Flowers are distributed across the full scroll, each blooming in a
+  // generous overlapping window so the garden grows in continuous waves
+  // rather than discrete bursts. Window length ≈ 0.35 of total scroll.
+  const variants = ["daisy", "tulip", "bell", "daisy", "tulip", "bell"] as const;
+  const hues = [350, 20, 320, 280, 60, 200, 10, 300, 50, 330, 270, 340];
+
+  const raw = [
+    // Back layer — distant, smaller, gentle hues, start earliest
+    { x: 6,  baseY: 60,  size: 88,  layer: 0 },
+    { x: 15, baseY: 42,  size: 108, layer: 0 },
+    { x: 24, baseY: 70,  size: 80,  layer: 0 },
+    { x: 33, baseY: 50,  size: 100, layer: 0 },
+    { x: 42, baseY: 78,  size: 92,  layer: 0 },
+    { x: 51, baseY: 46,  size: 118, layer: 0 },
+    { x: 60, baseY: 64,  size: 86,  layer: 0 },
+    { x: 69, baseY: 54,  size: 108, layer: 0 },
+    { x: 78, baseY: 74,  size: 94,  layer: 0 },
+    { x: 87, baseY: 50,  size: 100, layer: 0 },
+    { x: 94, baseY: 66,  size: 90,  layer: 0 },
+    // Mid layer
+    { x: 10, baseY: 112, size: 74,  layer: 1 },
+    { x: 22, baseY: 128, size: 78,  layer: 1 },
+    { x: 36, baseY: 116, size: 82,  layer: 1 },
+    { x: 48, baseY: 134, size: 72,  layer: 1 },
+    { x: 60, baseY: 120, size: 80,  layer: 1 },
+    { x: 74, baseY: 132, size: 76,  layer: 1 },
+    { x: 88, baseY: 118, size: 80,  layer: 1 },
+    // Foreground — biggest, latest, most saturated
+    { x: 8,  baseY: 18,  size: 128, layer: 2 },
+    { x: 28, baseY: 28,  size: 118, layer: 2 },
+    { x: 46, baseY: 14,  size: 150, layer: 2 },
+    { x: 64, baseY: 32,  size: 122, layer: 2 },
+    { x: 82, baseY: 22,  size: 138, layer: 2 },
+    { x: 96, baseY: 28,  size: 110, layer: 2 },
   ];
+
+  // Distribute each flower's bloom window across the full scroll based on
+  // its layer (back blooms first, foreground last) with a soft horizontal
+  // sweep so waves move left-to-right within each layer.
+  const flowers = raw.map((f, i) => {
+    const layerStart = [0.02, 0.18, 0.36][f.layer];
+    const layerEnd   = [0.78, 0.90, 1.00][f.layer];
+    const layerCount = raw.filter((r) => r.layer === f.layer).length;
+    const indexInLayer = raw.filter((r, j) => r.layer === f.layer && j <= i).length - 1;
+    // Stagger by index AND by horizontal position for a sweeping wave
+    const stagger = (indexInLayer / Math.max(1, layerCount - 1)) * 0.55
+                  + (f.x / 100) * 0.15;
+    const windowLen = 0.32;
+    const start = layerStart + stagger * (layerEnd - layerStart - windowLen);
+    const end = Math.min(1, start + windowLen);
+    return {
+      ...f,
+      hue: hues[i % hues.length],
+      variant: variants[i % variants.length],
+      start,
+      end,
+    };
+  });
+
 
   return (
     <div
