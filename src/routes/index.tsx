@@ -1,6 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Scene } from "@/components/garden/Scene";
+import ShinyText from "@/components/ui/ShinyText";
+import SplashCursor from '@/components/ui/SplashCursor';
+import { FlickeringGrid } from "@/components/ui/flickering-grid";
+
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,8 +33,20 @@ function Index() {
 
   return (
     <div className="grain relative">
+      <SplashCursor
+      DENSITY_DISSIPATION={3.5}
+      VELOCITY_DISSIPATION={2}
+      PRESSURE={0.1}
+      CURL={3}
+      SPLAT_RADIUS={0.2}
+      SPLAT_FORCE={6000}
+      COLOR_UPDATE_SPEED={10}
+      SHADING
+      RAINBOW_MODE={false}
+      COLOR="#F5E8A3"   // pollen green
+    />
       <Scene />
-
+     
       {/* Floating nav */}
       <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
         <nav className="glass rounded-full px-6 py-2.5 flex gap-1 text-[13px] tracking-wide">
@@ -61,15 +78,42 @@ function Index() {
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80" />
             A garden in progress · 2026
           </div>
-          <h1 className="text-display text-[clamp(3.5rem,10vw,9rem)] text-ink">
-            A landscape that
-            <br />
-            <em className="font-light italic text-ink/90">blooms with you.</em>
-          </h1>
-          <p className="mt-10 max-w-xl mx-auto text-lg text-ink/70 leading-relaxed">
-            I'm Iris — a designer and developer crafting interfaces that feel
-            less like screens and more like places. Scroll, and a garden grows.
-          </p>
+          <h1
+  className="
+    text-display
+    text-[clamp(3.5rem,10vw,9rem)]
+    text-ink
+    [text-shadow:0_6px_30px_rgba(255,255,255,0.45),0_4px_12px_rgba(15,23,42,0.2)]
+  "
+>  <ShinyText
+    text="A landscape that"
+    speed={8}
+    color="#0f172a"
+    shineColor="#94a3b8"
+    spread={120}
+    direction="right"
+    yoyo
+  />
+
+  <br />
+
+  <em className="font-light italic text-ink/90">
+    <ShinyText
+      text="blooms with you."
+      speed={19}
+      color="#0f172a"
+shineColor="#D0D08A"
+      spread={120}
+      direction="right"
+      yoyo
+    />
+  </em>
+</h1>
+    <div className="max-w-2xl mx-auto text-center mt-8">
+  <p className="max-w-2xl text-lg text-slate-700">
+  I'm Iris — a designer and developer crafting interfaces...
+</p>
+</div>
           <div className="mt-10 flex gap-3 justify-center">
             <a
               href="#projects"
@@ -210,7 +254,7 @@ function Index() {
                   <p className="text-ink/75 leading-relaxed">{e.body}</p>
                 </div>
                 {i < experience.length - 1 && (
-                  <div className="hidden md:block absolute left-[25%] top-8 bottom-[-2.5rem] w-px bg-white/30" />
+                  <div className="hidden md:block absolute left-[25%] top-8 -bg-conic-0bottom-[-2.5rem] w-px bg-white/30" />
                 )}
               </li>
             ))}
