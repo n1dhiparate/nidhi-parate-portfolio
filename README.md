@@ -107,10 +107,10 @@ This project is open source and available under the MIT License - see the LICENS
 
 ## 📞 Contact
 
-- **Email**: [Your Email]
-- **LinkedIn**: [Your LinkedIn Profile]
+- **Email**: nidhiparate2006@gmail.com
+- **LinkedIn**: [[Your LinkedIn Profile]](https://www.linkedin.com/in/nidhi-parate/)
 - **GitHub**: [@n1dhiparate](https://github.com/n1dhiparate)
-- **Portfolio**: [Your Portfolio Website]
+- **Portfolio**: [https://nidhi-parate-portfolio.vercel.app/](https://nidhi-parate-portfolio.vercel.app/)
 
 ## 🙏 Acknowledgments
 
