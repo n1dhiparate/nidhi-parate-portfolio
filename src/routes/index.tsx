@@ -10,7 +10,7 @@ import { FlickeringGrid } from "@/components/ui/flickering-grid";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Iris Bloom — Designer & Developer Portfolio" },
+      { title: "Nidhi Parate — Portfolio" },
       {
         name: "description",
         content:
@@ -85,11 +85,13 @@ function Index() {
     text-ink
     [text-shadow:0_6px_30px_rgba(255,255,255,0.45),0_4px_12px_rgba(15,23,42,0.2)]
   "
->  <ShinyText
-    text="A landscape that"
-    speed={8}
+>  
+
+<ShinyText
+    text="Growing ideas into"
+    speed={19}
     color="#0f172a"
-    shineColor="#94a3b8"
+    shineColor="#D0D08A"
     spread={120}
     direction="right"
     yoyo
@@ -99,7 +101,7 @@ function Index() {
 
   <em className="font-light italic text-ink/90">
     <ShinyText
-      text="blooms with you."
+      text="products that bloom."
       speed={19}
       color="#0f172a"
 shineColor="#D0D08A"
@@ -110,8 +112,8 @@ shineColor="#D0D08A"
   </em>
 </h1>
     <div className="max-w-2xl mx-auto text-center mt-8">
-  <p className="max-w-2xl text-lg text-slate-700">
-  I'm Iris — a designer and developer crafting interfaces...
+  <p className="max-w-2xl text-lg text-#0f172a/90 leading-relaxed shadow-lg *:**:not-[]:">
+ Turning curiosity into code and ideas into intelligent experiences.
 </p>
 </div>
           <div className="mt-10 flex gap-3 justify-center">
@@ -135,7 +137,7 @@ shineColor="#D0D08A"
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
         >
-          scroll to plant
+          scroll to see !
         </motion.div>
       </section>
 
@@ -144,24 +146,20 @@ shineColor="#D0D08A"
         <div className="grid md:grid-cols-5 gap-8 items-start">
           <div className="md:col-span-3 glass rounded-3xl p-10">
             <h2 className="text-display text-5xl md:text-6xl mb-6">
-              Quiet craft, <em className="italic font-light">loud results.</em>
+              Building projects, <em className="italic font-light">one at a time.</em>
             </h2>
             <p className="text-ink/80 text-lg leading-relaxed mb-4">
-              For eight years I've built digital products that prefer texture
-              over noise — tools for museums, climate startups, independent
-              publishers, and a handful of stubborn artists.
+              I'm Nidhi Parate, a B.Tech Information Technology student at UMIT, SNDT University. I enjoy building AI-powered applications that solve practical problems—from student onboarding assistants and RAG systems to personalized recommendation platforms.
             </p>
             <p className="text-ink/70 leading-relaxed">
-              My work sits between editorial design and engineering. I draw on
-              the page before I open the editor, prototype in code rather than
-              Figma, and treat motion as a first-class material.
+              My work focuses on Python, React, Flask, LLM integrations, and full-stack development. Through hackathons and personal projects, I've explored retrieval-augmented generation (RAG), authentication systems, recommendation engines, and AI-driven user experiences while continuously learning how to build products that people actually use.
             </p>
           </div>
           <div className="md:col-span-2 space-y-4">
-            <Stat k="Years practicing" v="8" />
-            <Stat k="Shipped products" v="40+" />
-            <Stat k="Based in" v="Lisbon · Remote" />
-            <Stat k="Currently" v="Open to commissions" />
+            <Stat k="CGPA" v="8.85" />
+            <Stat k="PROJECTS BUILT/PROGRESS" v="4+" />
+            <Stat k="Based in" v="Mumbai · India" />
+            <Stat k="Currently" v="  Seeking AI & Software Engineering Internships" />
           </div>
         </div>
       </Section>
@@ -204,14 +202,20 @@ shineColor="#D0D08A"
         <div className="space-y-6">
           {projects.map((p, i) => (
             <motion.a
-              key={p.title}
-              href="#"
-              className="glass rounded-3xl p-8 md:p-10 grid md:grid-cols-12 gap-6 group hover:bg-white/60 transition-colors"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
-            >
+  key={p.title}
+  href={p.link || p.github}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="glass rounded-3xl p-8 md:p-10 grid md:grid-cols-12 gap-6 group hover:bg-white/60 transition-colors"
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: "-100px" }}
+  transition={{
+    duration: 0.8,
+    delay: i * 0.05,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+>
               <div className="md:col-span-2 text-xs tracking-[0.2em] uppercase text-ink/50">
                 {String(i + 1).padStart(2, "0")} · {p.year}
               </div>
@@ -266,32 +270,65 @@ shineColor="#D0D08A"
       <Section id="contact" eyebrow="05 — Contact" last>
         <div className="glass rounded-[2.5rem] p-12 md:p-20 text-center">
           <h2 className="text-display text-6xl md:text-8xl mb-8">
-            Let's grow
+            Let's build
             <br />
-            <em className="italic font-light">something together.</em>
+            <em className="italic font-light">something intelligent.</em>
           </h2>
           <p className="text-lg text-ink/70 max-w-xl mx-auto mb-10">
-            I take on a handful of projects each year. If you have a quiet
-            idea that needs careful building, I'd love to hear it.
+            I'm actively seeking AI Engineering, Machine Learning, and Software
+  Development internship opportunities. If you're building interesting
+  products with AI, I'd love to connect and learn more.
           </p>
           <a
-            href="mailto:hello@irisbloom.studio"
+            href="mailto:nidhiparate2006@gmail.com"
             className="inline-block text-2xl md:text-3xl font-display italic underline decoration-1 underline-offset-8 hover:text-ink/70 transition"
           >
-            hello@irisbloom.studio
+            nidhiparate2006@gmail.com
           </a>
           <div className="mt-16 flex flex-wrap gap-6 justify-center text-sm text-ink/60">
-            <a href="#" className="hover:text-ink">Are.na</a>
-            <span>·</span>
-            <a href="#" className="hover:text-ink">Read.cv</a>
-            <span>·</span>
-            <a href="#" className="hover:text-ink">GitHub</a>
-            <span>·</span>
-            <a href="#" className="hover:text-ink">Instagram</a>
-          </div>
+  <a
+    href="https://github.com/n1dhiparate"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-ink"
+  >
+    GitHub
+  </a>
+
+  <span>·</span>
+
+  <a
+    href="https://www.linkedin.com/in/nidhi-parate"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-ink"
+  >
+    LinkedIn
+  </a>
+
+  <span>·</span>
+
+  <a
+  href="/nidhi_parate_resume.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:text-ink"
+>
+  Resume
+</a>
+
+  <span>·</span>
+
+  <a
+    href="mailto:nidhiparate2006@gmail.com"
+    className="hover:text-ink"
+  >
+    Email
+  </a>
+</div>
         </div>
         <div className="mt-20 text-center text-xs tracking-[0.3em] uppercase text-ink/50">
-          © 2026 · grown by hand in lisbon
+          © 2026 · Nidhi Parate · Building AI-powered products that bloom.
         </div>
       </Section>
     </div>
@@ -340,105 +377,120 @@ function Stat({ k, v }: { k: string; v: string }) {
 
 const skills = [
   {
-    kind: "Design",
-    title: "Interface & Editorial",
-    body: "Typographic systems, layout grids, art direction for product surfaces and long-form reading.",
-    tags: ["Figma", "Type", "Brand", "Print"],
+    kind: "AI engineering",
+    title: "RAG & LLM Applications",
+    body: "Building AI systems using RAG, FAISS, SentenceTransformers, and LLM APIs to solve real-world student and productivity problems.",
+    tags: ["Python", "RAG", "LLM", "API"],
   },
   {
-    kind: "Engineering",
-    title: "Frontend Craft",
-    body: "Production React with an eye for motion, accessibility, and the seams between components.",
+    kind: "FULL-STACK DEVELOPMENT",
+    title: "Frontend & Backend",
+    body: "Developing responsive applications with React, Flask, Supabase, authentication systems, an",
     tags: ["React", "TS", "Tailwind", "Motion"],
   },
   {
-    kind: "Engineering",
-    title: "Creative Coding",
-    body: "WebGL, generative systems, and scroll-driven scenes — the moving parts of a living interface.",
-    tags: ["GLSL", "Three.js", "Canvas", "SVG"],
+    kind: "AI PROJECTS",
+    title: "Applied Intelligence",
+    body: "Creating AI-powered products like Admit-Assist and Moodwave that combine machine learning with practical user experiences.",
+    tags: ["Groq API", "NLP", "AI Agents", "Automation"],
   },
   {
-    kind: "Practice",
-    title: "Research & Writing",
-    body: "User conversations, archival research, and writing the words that hold a product together.",
-    tags: ["Interviews", "Strategy", "Copy"],
+    kind: "DATA & DATABASES",
+    title: "Backend Systems",
+    body: "Designing scalable data flows, authentication, database integrations, and analytics-driven applications.",
+    tags: ["Postgres", "SQL", " Supabase", "Docker","node.js"],
   },
   {
-    kind: "Backend",
-    title: "Quiet Infrastructure",
-    body: "Small, considered backends — auth, content, payments — sized to the thing they support.",
-    tags: ["Node", "Postgres", "Edge"],
+    kind: "HACKATHONS",
+    title: "Rapid Product Building",
+    body: "Top 25 among 700+ teams at TCS InnovGenius, building AI solutions under strict deadlines and presenting to industry judges.",
+    tags: ["problem-solving", "teamwork", "innovation","pitching"],
   },
   {
-    kind: "Direction",
-    title: "Studio & Process",
-    body: "Running small teams, shaping briefs, and protecting the slow time good work requires.",
-    tags: ["Workshops", "Briefs", "Mentorship"],
+    kind: "LEARNING & EXPLORATION",
+    title: "Continuous Growth",
+    body: "Currently exploring AI Agents, Advanced SQL, Retrieval-Augmented Generation, and modern AI workflows.",
+    tags: ["AI agents", "Next.js", "Research", "Experimentation"],
   },
 ];
 
 const projects = [
   {
     year: "2026",
-    title: "Field Notes Atlas",
-    body: "A reading-first publication platform for a network of climate journalists, with offline drafts and a quiet annotation layer.",
-    tags: ["Editorial", "React", "CMS"],
+    title: "VibeWeave AI",
+    body: "AI-powered music discovery platform that combines Spotify listening history with LLM-based mood analysis to generate personalized playlists and recommendations.",
+    tags: ["AI", "LLM", "Groq API", "Music"],
+    github:"https://github.com/n1dhiparate/vibeweave-ai",
+    link: "https://vibeweave-ai.vercel.app/,",
+  },
+  {
+    year: "2026",
+    title: "Admit-Assist",
+    body: "RAG-powered student onboarding assistant that helps engineering students navigate admissions, documents, deadlines, and queries through contextual AI guidance.",
+    github : "https://github.com/n1dhiparate/admit-assist",
+    link: "",
+    tags: ["RAG", "Flask", "FAISS", "Education"],
   },
   {
     year: "2025",
-    title: "Lumen Museum",
-    body: "Online catalogue and ticketing for a contemporary art museum — typography-led, scroll-driven, image-forward.",
-    tags: ["Brand", "Web", "Motion"],
+    title: "SafePath",
+    body: "Safety-first navigation platform that analyzes crime-related datasets to score route risk and help users make safer travel decisions (especially for women).",
+    github : "https://github.com/n1dhiparate/minor-project-safepath",
+    link: "",
+    tags: ["Safety", "Navigation","Data Analysis", "Maps"],
   },
   {
-    year: "2025",
-    title: "Tide Studio",
-    body: "Identity and product surface for an indie audio studio: gradient-rich, generative cover art, custom waveform views.",
-    tags: ["Identity", "WebGL"],
+    year: "2026",
+    title: "Nidhi Parate Portfolio",
+    body: "A living portfolio documenting my journey into AI engineering through projects, experiments, hackathons, and thoughtful frontend craftsmanship.",
+    github: "https://github.com/n1dhiparate/nidhi-parate-portfolio",
+    link: "",
+    tags: ["react", "typescript", "motion", "design"],
   },
   {
-    year: "2024",
-    title: "Slow Mail",
-    body: "A scheduled-send email client built around weekly rhythms instead of inbox zero. Quiet, considered, calm.",
-    tags: ["Product", "App"],
+    year: "2026",
+    title: "Multi-Agent AI Document System",
+    body: "AI-powered document intelligence platform that transforms PDFs into structured research reports using RAG, semantic search, vector databases, and a multi-agent workflow for planning, writing, reviewing, and citation generation.",
+    github: "https://github.com/n1dhiparate/multi-agent-ai-document-system",
+    link: "",
+    tags: ["RAG", "ChromaDB", "LLM", "AI Agents","FastAPI"],
   },
-  {
-    year: "2023",
-    title: "Herbarium",
-    body: "A taxonomy and search tool for a 19th-century botanical archive — 12,000 specimens, faceted, beautifully indexed.",
-    tags: ["Archive", "Search"],
-  },
-  {
-    year: "2022",
-    title: "Common Ground",
-    body: "Community land-trust software: maps, member rolls, voting. Built with three people over a long, careful year.",
-    tags: ["Civic", "Maps"],
-  },
+  
 ];
 
 const experience = [
+  
+ 
   {
-    range: "2024 — Now",
-    role: "Independent Practice",
-    place: "Iris Bloom Studio · Lisbon",
-    body: "Working with small teams on editorial products, cultural institutions, and the occasional generative experiment.",
+    range: "2025 — Now",
+    role: "E-Cell Member (Junior council)",
+    place: "Entrepreneurship Cell, UMIT",
+    body: "Contributing to social media strategy and student engagement initiatives while promoting innovation, entrepreneurship, and startup culture across campus.",
+  },
+  
+  
+  {
+    range: "2025",
+    role: "Python Specialization",
+    place: "University of Michigan · Coursera",
+    body: "Completed the Python for Everybody Specialization, covering programming fundamentals, databases, APIs, and data processing workflows that strengthened my backend development foundation.",
   },
   {
-    range: "2021 — 2024",
-    role: "Senior Designer & Engineer",
-    place: "Tide Lab · Berlin",
-    body: "Led design and frontend on three flagship products. Built the studio's motion language and component library.",
+    range: "2024 — 2025",
+    role: "ACM — PR & Outreach Lead",
+    place: "UMIT ACM Student Chapter",
+    body: "Coordinating outreach initiatives, fostering cross-college collaborations, and helping organize technical events that connect students with emerging technologies and industry opportunities.",
+  },
+   {
+    range: "2024 — 2028",
+    role: "B.Tech Information Technology",
+    place: "Usha Mittal Institute of Technology, SNDT Women's University · Mumbai",
+    body: "Pursuing Information Technology with a current GPA of 8.85. Exploring artificial intelligence, full-stack development, and intelligent systems through hands-on projects, hackathons, and technical communities.",
   },
   {
-    range: "2019 — 2021",
-    role: "Product Designer",
-    place: "Field Studio · Remote",
-    body: "Shipped end-to-end across research, design, and frontend. Mentored two juniors. Wrote our process handbook.",
-  },
-  {
-    range: "2017 — 2019",
-    role: "Designer",
-    place: "Slow Press · London",
-    body: "First job. Editorial design for a print quarterly that taught me to value white space and finishing the page.",
-  },
+    range: "2022 — 2024",
+    role: "Higher Secondary Education",
+    place: "Jai Hind College · Mumbai",
+    body: "Completed HSC under the Maharashtra State Board with 80% (vocational studies : Electronics), building a strong foundation in mathematics, logical reasoning, and analytical thinking that later led me toward technology and AI.",
+  }
 ];

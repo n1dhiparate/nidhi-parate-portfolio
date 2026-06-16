@@ -14,7 +14,7 @@ export function Scene() {
   const cloud1X = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const cloud2X = useTransform(scrollYProgress, [0, 1], ["0%", "-25%"]);
   const hillShift = 0;
-type FlowerType = "pink" | "white" | "purple" | "red";
+type FlowerType = "white" ;
 const raw: {
   x: number;
   size: number;
@@ -57,7 +57,7 @@ const flowers = raw.map((f) => ({
   squareSize={8}
   gridGap={12}
   color="white"
-  maxOpacity={0.5}
+  maxOpacity={0.45}
   flickerChance={0.2}
 />
 
